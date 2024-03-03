@@ -13,4 +13,5 @@ I use
 .Creating the app component 
 .Creating blog pages
 .Creating NavBar component
-.
+.URL parameters with react router - create new page article content
+
