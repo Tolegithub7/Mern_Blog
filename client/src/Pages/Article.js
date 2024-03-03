@@ -1,12 +1,16 @@
 import React from "react";
 import { useParams } from "react-router-dom";
+import ArticleContent from "./ArticleContent.js";
 
 const Article = () => {
   const { name } = useParams();
+  const article = ArticleContent.find((article) => article.name === name);
+  if (!article) return <h1>Article does not exist</h1>;
   return (
     <div className="mb-20">
       <h1 className="sm:text-4xl text-2xl font-bold my-6 text-gray-900">
         This is {name} Article
+        {article.title}
       </h1>
       <p className="mx-auto leading-relaxed text-base mb-4">
         Aute minim magna velit ut occaecat occaecat. Non sunt est laboris
@@ -35,6 +39,11 @@ const Article = () => {
         proident eu exercitation sunt pariatur. Cillum deserunt ipsum pariatur
         duis irure elit enim.
       </p>
+      {article.content.map((paragraph, index) => (
+        <p className="mx-auto leading-relaxed text-base mb-4" key={index}>
+          {paragraph}
+        </p>
+      ))}
     </div>
   );
 };
