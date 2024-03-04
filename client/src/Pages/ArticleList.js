@@ -1,39 +1,49 @@
 import React from "react";
+import { Link } from "react-router-dom";
+import ArticleContent from "./ArticleContent";
+import articles from "./ArticleContent";
 
 const ArticleList = () => {
   return (
-    <div className="mb-20">
-      <h1 className="sm:text-4xl text-2xl font-bold my-6 text-gray-900">
-        {" "}
-        ArticleList
+    <div>
+      <h1 className="sm:text-4xl text-2xl font-bold my-6 text-grey-900">
+        Articles
       </h1>
-      <p className="mx-auto leading-relaxed text-base mb-4">
-        Aute minim magna velit ut occaecat occaecat. Non sunt est laboris
-        consectetur ut est velit. Aliqua Lorem eiusmod deserunt et laborum non
-        reprehenderit incididunt voluptate sint in culpa est do.
-      </p>
-      <p className="mx-auto leading-relaxed text-base mb-4">
-        Enim aute do dolore id magna proident nulla laboris amet deserunt quis
-        esse sint magna. Irure officia commodo quis laborum irure officia
-        eiusmod veniam excepteur cupidatat anim. Ea aute elit quis Lorem dolore
-        ipsum. Pariatur consequat est sit eiusmod voluptate est ea.
-      </p>
-      <p className="mx-auto leading-relaxed text-base mb-4">
-        Velit laborum velit dolore nisi sunt anim dolor sunt ad Lorem tempor
-        excepteur est ad. Occaecat et est est nostrud velit. Esse occaecat
-        veniam ipsum aliquip esse laboris incididunt ut aute nisi sit minim
-        ipsum nulla. Nisi fugiat anim deserunt aliqua ea velit excepteur
-        excepteur. Ad laborum elit ex amet irure culpa deserunt quis est non
-        fugiat est velit. In qui fugiat mollit tempor cupidatat nostrud. Dolor
-        reprehenderit ex sunt non in aliquip sit sunt elit nulla. Anim irure
-        Lorem amet pariatur aute amet commodo. Amet amet pariatur incididunt
-        consectetur cillum aute velit est. Lorem laborum laborum pariatur
-        voluptate Lorem minim ipsum aute quis enim cillum deserunt id officia.
-        Irure magna cillum magna deserunt esse non sit sint Lorem quis
-        excepteur. Anim sunt velit ea esse amet deserunt esse esse ullamco
-        proident eu exercitation sunt pariatur. Cillum deserunt ipsum pariatur
-        duis irure elit enim.
-      </p>
+      <div className="container py-4 mx-auto">
+        <div className="flex flex-wrap -m-4">
+          {ArticleContent.map((article, index) => (
+            <div key={index} className="p-4 md:w-1/2">
+              <div className="h-full border-2 border-gray-200 border-opacity-60 round-lg overflow-hidden">
+                <Link to={`/article/${article.name}`}>
+                  <img
+                    className="lg:h-48 md:h-36 w-full object-cover object-center "
+                    src={articles.thumbnail}
+                    alt="blog"
+                  />
+                </Link>
+                <div className="p-6">
+                  <Link key={index} to={`/article/${article.name}`}>
+                    <h3 className="text-lg font-medium text-gray-900 mb-3">
+                      {article.title}
+                    </h3>
+                  </Link>
+                  <p className="leading-relaxed mb-3">
+                    {article.content[0].substring(0, 110)} ...
+                  </p>
+                  <div className="flex item-center flex-wrap">
+                    <Link
+                      className="text-indigo-500 inline-flex items-center md:mb-2 lg:mb-0"
+                      to={`/article/${article.name}`}
+                    >
+                      Learn more
+                    </Link>
+                  </div>
+                </div>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
     </div>
   );
 };
