@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 
 const Articles = ({ articles }) => {
   return (
-    <div>
+    <>
       {articles.map((article, index) => (
         <div key={index} className="p-4 md:w-1/2">
           <div className="h-full border-2 border-gray-200 border-opacity-60 round-lg overflow-hidden">
@@ -35,7 +35,7 @@ const Articles = ({ articles }) => {
           </div>
         </div>
       ))}
-    </div>
+    </>
   );
 };
 
